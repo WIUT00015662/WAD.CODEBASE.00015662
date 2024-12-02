@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Server.Data;
 using Server.Models;
+using Server.Repositories;
 
 namespace Server.Controllers
 {
@@ -16,111 +17,88 @@ namespace Server.Controllers
     [ApiController]
     public class Topic_00015662Controller : ControllerBase
     {
-        private readonly GeneralDBContext_00015662 _context;
-
-        public Topic_00015662Controller(GeneralDBContext_00015662 context)
+        private readonly IRepository_00015662<Topic_00015662> _topicRepository;
+        public Topic_00015662Controller(IRepository_00015662<Topic_00015662> topicRepository)
         {
-            _context = context;
+            _topicRepository = topicRepository;
         }
 
-        // GET: api/Topic_00015662
+
+
+
+
+
+
+        // GET: api/<Topic_00015662Controller>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Topic_00015662>>> GetTopics()
+        public async Task<IEnumerable<Topic_00015662>> Get()
         {
-          if (_context.Topics == null)
-          {
-              return NotFound();
-          }
-            return await _context.Topics.ToListAsync();
+            return await _topicRepository.GetAllAsync();
         }
 
-        // GET: api/Topic_00015662/5
+
+
+
+
+
+
+
+        // GET api/<Topic_00015662Controller>/id
         [HttpGet("{id}")]
-        public async Task<ActionResult<Topic_00015662>> GetTopic_00015662(int id)
+        public async Task<IActionResult> GetByID(int id)
         {
-          if (_context.Topics == null)
-          {
-              return NotFound();
-          }
-            var topic_00015662 = await _context.Topics.FindAsync(id);
-
-            if (topic_00015662 == null)
+            var topic = await _topicRepository.GetByIDAsync(id);
+            if (topic == null)
             {
                 return NotFound();
             }
-
-            return topic_00015662;
+            else
+            {
+                return Ok(topic);
+            }
         }
 
-        // PUT: api/Topic_00015662/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTopic_00015662(int id, Topic_00015662 topic_00015662)
-        {
-            if (id != topic_00015662.ID)
-            {
-                return BadRequest();
-            }
 
-            _context.Entry(topic_00015662).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!Topic_00015662Exists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return NoContent();
-        }
 
-        // POST: api/Topic_00015662
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
+
+        // POST api/<Topic_00015662Controller>
         [HttpPost]
-        public async Task<ActionResult<Topic_00015662>> PostTopic_00015662(Topic_00015662 topic_00015662)
+        public async Task<IActionResult> Create(Topic_00015662 topic)
         {
-          if (_context.Topics == null)
-          {
-              return Problem("Entity set 'GeneralDBContext_00015662.Topics'  is null.");
-          }
-            _context.Topics.Add(topic_00015662);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetTopic_00015662", new { id = topic_00015662.ID }, topic_00015662);
+            await _topicRepository.AddAsync(topic);
+            return CreatedAtAction(nameof(GetByID), new { id = topic.ID }, topic);
         }
 
-        // DELETE: api/Topic_00015662/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTopic_00015662(int id)
+
+
+
+
+
+
+        // PUT api/<Topic_00015662Controller>
+        [HttpPut]
+        public async Task<IActionResult> Update(Topic_00015662 topic)
         {
-            if (_context.Topics == null)
-            {
-                return NotFound();
-            }
-            var topic_00015662 = await _context.Topics.FindAsync(id);
-            if (topic_00015662 == null)
-            {
-                return NotFound();
-            }
-
-            _context.Topics.Remove(topic_00015662);
-            await _context.SaveChangesAsync();
-
+            //if(id!=items.ID) return BadRequest();
+            await _topicRepository.UpdateAsync(topic);
             return NoContent();
         }
 
-        private bool Topic_00015662Exists(int id)
+
+
+
+
+
+        // DELETE api/<Topic_00015662Controller>/id
+        [HttpDelete("{id}")]
+
+        public async Task<IActionResult> Delete(int id)
         {
-            return (_context.Topics?.Any(e => e.ID == id)).GetValueOrDefault();
+            await _topicRepository.DeleteAsync(id);
+            return NoContent();
         }
     }
 }
