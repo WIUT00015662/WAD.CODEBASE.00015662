@@ -1,5 +1,5 @@
 # This application was developed for Web Application module, as coursework portfolio project @ WIUT by student ID: 00015662
-
+# The topic is a simple blog because when you divide 00015662 by 20, the remainder is 2. The matching topic for this number is simple blog.
 # Prerequisites
 ## Before starting the project, ensure you have the following versions installed:
 - Angular: Version 19
