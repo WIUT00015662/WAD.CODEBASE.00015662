@@ -4,6 +4,10 @@ import { Details00015662Component } from './components_00015662/details-00015662
 import { Delete00015662Component } from './components_00015662/delete-00015662/delete-00015662.component';
 import { Edit00015662Component } from './components_00015662/edit-00015662/edit-00015662.component';
 import { Create00015662Component } from './components_00015662/create-00015662/create-00015662.component';
+import { EditTopic00015662Component } from './components_00015662/edit-topic-00015662/edit-topic-00015662.component';
+import { DetailsTopic00015662Component } from './components_00015662/details-topic-00015662/details-topic-00015662.component';
+import { DeleteTopic00015662Component } from './components_00015662/delete-topic-00015662/delete-topic-00015662.component';
+import { CreateTopic00015662Component } from './components_00015662/create-topic-00015662/create-topic-00015662.component';
 
 export const routes: Routes = [
     {
@@ -29,5 +33,21 @@ export const routes: Routes = [
     {
         path:"create",
         component: Create00015662Component
+    },
+    {
+        path:"edittopic/:id",
+        component: EditTopic00015662Component
+    },
+    {
+        path:"detailstopic/:id",
+        component: DetailsTopic00015662Component
+    },
+    {
+        path:"deletetopic/:id",
+        component: DeleteTopic00015662Component
+    },
+    {
+        path:"createtopic",
+        component: CreateTopic00015662Component
     }
 ];

@@ -44,7 +44,6 @@ export class Create00015662Component {
 
   create() {
     this.createBlogPost_00015662.topicID = this.tID
-    console.log(this.createBlogPost_00015662.topicID)
     this.blogPostService.create(this.createBlogPost_00015662).subscribe(result => {
       alert("Item Saved")
       this.router.navigateByUrl("home")

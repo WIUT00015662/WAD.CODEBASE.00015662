@@ -1,3 +1,4 @@
+<h2 style="text-align: center; margin-top: 20px; font-size: large; font-weight: 800;">Blog Posts</h2>
 <div class="flex justify-center my-4 mx-3">
     <table mat-table [dataSource]="blogPosts_00015662" class="mat-elevation-z8">
         <ng-container matColumnDef="id">
@@ -27,7 +28,7 @@
         </ng-container>
         
         <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef style="padding-left: 15%;">actions</th>
+            <th mat-header-cell *matHeaderCellDef style="padding-left: 10%;">actions</th>
             <td mat-cell *matCellDef="let blogPost_00015662">
                 <div class="flex justify-around">
                     <button mat-raised-button color="primary" (click)="EditClicked(blogPost_00015662.id)">Edit</button>
@@ -38,5 +39,34 @@
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+
+<h2 style="text-align: center; margin-top: 20px; font-size: large; font-weight: 800;">Topics</h2>
+<div class="flex justify-center my-4 mx-3">
+    <table mat-table [dataSource]="topics_00015662" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> id </th>
+            <td mat-cell *matCellDef="let topic_00015662"> {{topic_00015662.id}} </td>
+        </ng-container>
+    
+
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> title </th>
+            <td mat-cell *matCellDef="let topic_00015662"> {{topic_00015662.title}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef style="padding-left: 31%;">actions</th>
+            <td mat-cell *matCellDef="let topic_00015662">
+                <div class="flex justify-around">
+                    <button mat-raised-button color="primary" (click)="EditTopicClicked(topic_00015662.id)">Edit</button>
+                    <button mat-raised-button color="accent" (click)="DetailsTopicClicked(topic_00015662.id)">Details</button>
+                    <button mat-raised-button color="warn" (click)="DeleteTopicClicked(topic_00015662.id)">Delete</button>
+                </div>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedTopicColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedTopicColumns;"></tr>
     </table>
 </div>

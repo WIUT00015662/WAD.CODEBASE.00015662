@@ -30,16 +30,4 @@ export class ServiceBlogPost00015662Service {
   getAllTopics_00015662() {
     return this.httpClient.get<Topic_00015662[]>(this.topicUrl);
   };
-  getTopicById(id: number) {
-    return this.httpClient.get<Topic_00015662>(this.topicUrl + id);
-  }; 
-  editTopic(Topic: Topic_00015662) {
-    return this.httpClient.put(this.topicUrl, Topic);
-  };
-  deleteTopic(id: number) {
-    return this.httpClient.delete(this.topicUrl + id);
-  };
-  createTopic(Topic: Topic_00015662) {
-    return this.httpClient.post<Topic_00015662>(this.topicUrl, Topic);
-  };
 }

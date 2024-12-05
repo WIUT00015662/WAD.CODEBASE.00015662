@@ -20,6 +20,10 @@ export class Navigation00015662Component {
     console.log("From Create");
     this.router.navigateByUrl("create")
   }
+  CreateTopicClicked() {
+    console.log("From Create");
+    this.router.navigateByUrl("createtopic")
+  }
 
   onHomeIconClicked() {
     this.router.navigateByUrl("home")

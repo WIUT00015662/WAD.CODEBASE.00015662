@@ -1,1 +1,15 @@
-<p>edit-topic-00015662 works!</p>
+<div class="p-8 mt-8 flex justify-center">
+    <form class="shadow border w-4/12 p-4">
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Title</mat-label>
+                <input matInput name="title" [(ngModel)]="editTopic_00015662.title" type="text">
+            </mat-form-field>
+        </div>
+        <div class="flex justify-center">
+            <button mat-raised-button color="primary" (click)="toHome()">Cancel</button>
+            <button mat-raised-button color="primary" (click)="edit()">Edit</button>
+        </div>
+    </form>
+</div>
+
