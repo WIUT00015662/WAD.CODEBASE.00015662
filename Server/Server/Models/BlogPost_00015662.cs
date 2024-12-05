@@ -20,7 +20,7 @@ namespace Server.Models
 
 
         [Required(ErrorMessage = "Creation date is required.")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }  =  DateTime.Now;
 
 
         [Required(ErrorMessage = "Topic is required.")]
