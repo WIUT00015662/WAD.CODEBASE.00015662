@@ -1,0 +1,30 @@
+<div class="p-8 mt-8 flex justify-center">
+    <form class="shadow border w-4/12 p-4">
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Title</mat-label>
+                <input matInput name="title" [(ngModel)]="createBlogPost_00015662.title" type="text">
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Content</mat-label>
+                <input matInput name="content" [(ngModel)]="createBlogPost_00015662.content" type="text">
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Choose Topic</mat-label>
+                <mat-select [(ngModel)]="tID" name="Topic">
+                    @for(t of topic; track t)
+                    {
+                        <mat-option [value]="t.id">{{t.title}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="flex justify-center">
+            <button mat-raised-button color="primary" (click)="create()">Create</button>
+        </div>
+    </form>
+</div>
